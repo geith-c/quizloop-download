@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="tl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quiz Loop</title>
+<title>Quiz Loop - Faith & Wisdom</title>
 
 <style>
 * {
@@ -20,6 +19,7 @@ body {
   color: #1e293b;
 }
 
+/* MOVING BACKGROUND */
 .background {
   position: fixed;
   inset: 0;
@@ -30,39 +30,92 @@ body {
 
 .faith {
   position: absolute;
-  bottom: -40px;
+  bottom: -60px;
+  left: 0;
+  width: 100%;
+  text-align: center;
   color: #93c5fd;
   opacity: 0;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
+  white-space: nowrap;
   animation: floatUp linear infinite;
   user-select: none;
 }
 
-.faith:nth-child(1) { left: 5%; animation-duration: 13s; animation-delay: 0s; }
-.faith:nth-child(2) { left: 15%; animation-duration: 17s; animation-delay: 3s; }
-.faith:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 6s; }
-.faith:nth-child(4) { left: 35%; animation-duration: 19s; animation-delay: 1s; }
-.faith:nth-child(5) { left: 45%; animation-duration: 15s; animation-delay: 5s; }
-.faith:nth-child(6) { left: 55%; animation-duration: 18s; animation-delay: 2s; }
-.faith:nth-child(7) { left: 65%; animation-duration: 14s; animation-delay: 7s; }
-.faith:nth-child(8) { left: 75%; animation-duration: 20s; animation-delay: 4s; }
-.faith:nth-child(9) { left: 85%; animation-duration: 16s; animation-delay: 0s; }
-.faith:nth-child(10) { left: 95%; animation-duration: 13s; animation-delay: 8s; }
+.faith:nth-child(1) {
+  animation-duration: 13s;
+  animation-delay: 0s;
+}
+
+.faith:nth-child(2) {
+  animation-duration: 17s;
+  animation-delay: 3s;
+}
+
+.faith:nth-child(3) {
+  animation-duration: 12s;
+  animation-delay: 6s;
+}
+
+.faith:nth-child(4) {
+  animation-duration: 19s;
+  animation-delay: 1s;
+}
+
+.faith:nth-child(5) {
+  animation-duration: 15s;
+  animation-delay: 5s;
+}
+
+.faith:nth-child(6) {
+  animation-duration: 18s;
+  animation-delay: 2s;
+}
+
+.faith:nth-child(7) {
+  animation-duration: 14s;
+  animation-delay: 7s;
+}
+
+.faith:nth-child(8) {
+  animation-duration: 20s;
+  animation-delay: 4s;
+}
+
+.faith:nth-child(9) {
+  animation-duration: 16s;
+  animation-delay: 0s;
+}
+
+.faith:nth-child(10) {
+  animation-duration: 13s;
+  animation-delay: 8s;
+}
 
 @keyframes floatUp {
   0% {
-    transform: translateY(0) rotate(-10deg);
+    transform: translateY(0) scale(0.9);
     opacity: 0;
   }
-  10% { opacity: 0.65; }
-  80% { opacity: 0.45; }
+
+  12% {
+    opacity: 0.55;
+  }
+
+  75% {
+    opacity: 0.35;
+  }
+
   100% {
-    transform: translateY(-115vh) rotate(15deg);
+    transform: translateY(-115vh) scale(1.1);
     opacity: 0;
   }
 }
 
+/* MAIN CARD */
 main {
   position: relative;
   z-index: 1;
@@ -80,12 +133,34 @@ main {
   border-radius: 22px;
   text-align: center;
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.22);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.22);
 }
 
 h1 {
   color: #2563eb;
   margin-top: 0;
+  margin-bottom: 8px;
+}
+
+/* LIGHT BULB */
+.bulb {
+  display: inline-block;
+  font-size: 46px;
+  margin: 8px 0;
+  animation: think 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.5));
+}
+
+@keyframes think {
+  0%, 100% {
+    transform: scale(1) rotate(-5deg);
+    filter: drop-shadow(0 0 5px rgba(250, 204, 21, 0.4));
+  }
+
+  50% {
+    transform: scale(1.12) rotate(5deg);
+    filter: drop-shadow(0 0 16px rgba(250, 204, 21, 0.9));
+  }
 }
 
 p {
@@ -119,33 +194,44 @@ p {
 
 <body>
 
+<!-- FAITH & WISDOM BACKGROUND -->
 <div class="background" aria-hidden="true">
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
-  <span class="faith">faith</span>
+  <span class="faith">✦ Faith &amp; Wisdom ✦</span>
+  <span class="faith">💡 Faith &amp; Wisdom</span>
+  <span class="faith">✦ Faith &amp; Wisdom ✦</span>
+  <span class="faith">💡 Faith &amp; Wisdom</span>
+  <span class="faith">✦ Faith &amp; Wisdom ✦</span>
+  <span class="faith">💡 Faith &amp; Wisdom</span>
+  <span class="faith">✦ Faith &amp; Wisdom ✦</span>
+  <span class="faith">💡 Faith &amp; Wisdom</span>
+  <span class="faith">✦ Faith &amp; Wisdom ✦</span>
+  <span class="faith">💡 Faith &amp; Wisdom</span>
 </div>
 
+<!-- MAIN CONTENT -->
 <main>
   <section class="card">
+
     <h1>Quiz Loop</h1>
+
+    <div class="bulb" aria-hidden="true">💡</div>
+
+    <p>Faith &amp; Wisdom</p>
+
     <p>Review, learn, and test your knowledge!</p>
+
     <p>I-download ang quiz app dito.</p>
 
-    
-    <a class="download" href="./QUIZLOOP_v1.0.0.APK" download>
+    <a class="download"
+       href="./QUIZLOOP_v1.0.0.APK"
+       download>
       ↓ Download APK
     </a>
 
     <p class="note">
       Learn something new every day.
     </p>
+
   </section>
 </main>
 
