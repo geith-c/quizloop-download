@@ -19,7 +19,7 @@ body {
   color: #1e293b;
 }
 
-/* MOVING BACKGROUND */
+/* DARK BLUE BACKGROUND */
 .background {
   position: fixed;
   inset: 0;
@@ -27,75 +27,110 @@ body {
   pointer-events: none;
   z-index: 0;
 }
-/* GLOWING BLUE BUBBLES */
+
+/* FLOATING FAITH & WISDOM LABELS */
+.faith {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: -60px;
+  text-align: center;
+  color: #bfdbfe;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  text-shadow:
+    0 0 8px #3b82f6,
+    0 0 18px #2563eb;
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+
+.faith:nth-child(1)  { animation-duration: 14s; animation-delay: 0s; }
+.faith:nth-child(2)  { animation-duration: 17s; animation-delay: 3s; }
+.faith:nth-child(3)  { animation-duration: 13s; animation-delay: 6s; }
+.faith:nth-child(4)  { animation-duration: 19s; animation-delay: 1s; }
+.faith:nth-child(5)  { animation-duration: 15s; animation-delay: 5s; }
+.faith:nth-child(6)  { animation-duration: 18s; animation-delay: 2s; }
+.faith:nth-child(7)  { animation-duration: 14s; animation-delay: 7s; }
+.faith:nth-child(8)  { animation-duration: 20s; animation-delay: 4s; }
+.faith:nth-child(9)  { animation-duration: 16s; animation-delay: 0s; }
+.faith:nth-child(10) { animation-duration: 13s; animation-delay: 8s; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-115vh);
+    opacity: 0;
+  }
+}
+
+/* BUBBLES LAYER */
 .bubble-container {
   position: fixed;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: 0;
-}
-.background {
-  z-index: 0;
-}
-
-.bubble-container {
-  z-index: 0;
-}
-
-main {
-  position: relative;
   z-index: 1;
 }
 
+/* BLUE GLOWING BUBBLES */
 .bubble {
-  box-shadow:
-    0 0 10px rgba(59, 130, 246, 0.8),
-    0 0 22px rgba(37, 99, 235, 0.65),
-    0 0 40px rgba(59, 130, 246, 0.35),
-    inset 0 0 12px rgba(96, 165, 250, 0.5);
-}
+  position: absolute;
+  display: block;
+  bottom: -70px;
+  border-radius: 50%;
+  border: 1px solid rgba(147, 197, 253, 0.95);
 
   background:
     radial-gradient(
       circle at 30% 25%,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(147, 197, 253, 0.45) 8%,
-      rgba(59, 130, 246, 0.15) 35%,
-      rgba(37, 99, 235, 0.04) 70%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(191, 219, 254, 0.9) 5%,
+      rgba(96, 165, 250, 0.65) 18%,
+      rgba(37, 99, 235, 0.25) 45%,
+      rgba(30, 64, 175, 0.08) 70%,
       transparent 100%
     );
 
   box-shadow:
-    0 0 8px rgba(59, 130, 246, 0.65),
-    0 0 18px rgba(37, 99, 235, 0.45),
-    inset 0 0 10px rgba(96, 165, 250, 0.35);
+    0 0 8px rgba(96, 165, 250, 0.95),
+    0 0 18px rgba(59, 130, 246, 0.9),
+    0 0 32px rgba(37, 99, 235, 0.65),
+    inset 0 0 10px rgba(191, 219, 254, 0.7);
 
   animation:
     bubbleRise linear infinite,
-    blueAura 2.5s ease-in-out infinite alternate;
+    blueAura 2s ease-in-out infinite alternate;
 }
 
 @keyframes bubbleRise {
   0% {
-    transform: translateY(0) translateX(0) scale(0.8);
+    transform: translate3d(0, 0, 0) scale(0.7);
     opacity: 0;
   }
-
   10% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate3d(18px, -50vh, 0) scale(1);
     opacity: 0.85;
   }
-
-  50% {
-    transform: translateY(-50vh) translateX(15px) scale(1);
-  }
-
   90% {
-    opacity: 0.65;
+    opacity: 0.75;
   }
-
   100% {
-    transform: translateY(-115vh) translateX(-12px) scale(1.15);
+    transform: translate3d(-12px, -115vh, 0) scale(1.2);
     opacity: 0;
   }
 }
@@ -103,110 +138,23 @@ main {
 @keyframes blueAura {
   from {
     box-shadow:
-      0 0 5px rgba(59, 130, 246, 0.4),
-      0 0 12px rgba(37, 99, 235, 0.25),
-      inset 0 0 6px rgba(147, 197, 253, 0.25);
+      0 0 5px rgba(59, 130, 246, 0.6),
+      0 0 12px rgba(37, 99, 235, 0.45),
+      inset 0 0 6px rgba(191, 219, 254, 0.4);
   }
-
   to {
     box-shadow:
-      0 0 12px rgba(96, 165, 250, 0.95),
-      0 0 28px rgba(37, 99, 235, 0.75),
-      0 0 42px rgba(59, 130, 246, 0.3),
-      inset 0 0 12px rgba(147, 197, 253, 0.65);
-  }
-}
-.faith {
-  position: absolute;
-  bottom: -60px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  color: #93c5fd;
-  opacity: 0;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
-  white-space: nowrap;
-  animation: floatUp linear infinite;
-  user-select: none;
-}
-
-.faith:nth-child(1) {
-  animation-duration: 13s;
-  animation-delay: 0s;
-}
-
-.faith:nth-child(2) {
-  animation-duration: 17s;
-  animation-delay: 3s;
-}
-
-.faith:nth-child(3) {
-  animation-duration: 12s;
-  animation-delay: 6s;
-}
-
-.faith:nth-child(4) {
-  animation-duration: 19s;
-  animation-delay: 1s;
-}
-
-.faith:nth-child(5) {
-  animation-duration: 15s;
-  animation-delay: 5s;
-}
-
-.faith:nth-child(6) {
-  animation-duration: 18s;
-  animation-delay: 2s;
-}
-
-.faith:nth-child(7) {
-  animation-duration: 14s;
-  animation-delay: 7s;
-}
-
-.faith:nth-child(8) {
-  animation-duration: 20s;
-  animation-delay: 4s;
-}
-
-.faith:nth-child(9) {
-  animation-duration: 16s;
-  animation-delay: 0s;
-}
-
-.faith:nth-child(10) {
-  animation-duration: 13s;
-  animation-delay: 8s;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(0.9);
-    opacity: 0;
-  }
-
-  12% {
-    opacity: 0.55;
-  }
-
-  75% {
-    opacity: 0.35;
-  }
-
-  100% {
-    transform: translateY(-115vh) scale(1.1);
-    opacity: 0;
+      0 0 12px rgba(147, 197, 253, 1),
+      0 0 28px rgba(59, 130, 246, 0.95),
+      0 0 45px rgba(37, 99, 235, 0.75),
+      inset 0 0 12px rgba(219, 234, 254, 0.85);
   }
 }
 
-/* MAIN CARD */
+/* MAIN CONTENT */
 main {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -236,18 +184,17 @@ h1 {
   font-size: 46px;
   margin: 8px 0;
   animation: think 2.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.5));
+  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.7));
 }
 
 @keyframes think {
   0%, 100% {
     transform: scale(1) rotate(-5deg);
-    filter: drop-shadow(0 0 5px rgba(250, 204, 21, 0.4));
+    filter: drop-shadow(0 0 5px rgba(250, 204, 21, 0.5));
   }
-
   50% {
     transform: scale(1.12) rotate(5deg);
-    filter: drop-shadow(0 0 16px rgba(250, 204, 21, 0.9));
+    filter: drop-shadow(0 0 18px rgba(250, 204, 21, 1));
   }
 }
 
@@ -277,30 +224,21 @@ p {
   color: #64748b;
   margin-top: 18px;
 }
+
+/* REDUCE ANIMATION IF DEVICE REQUESTS IT */
+@media (prefers-reduced-motion: reduce) {
+  .faith,
+  .bubble,
+  .bulb {
+    animation-duration: 20s;
+  }
+}
 </style>
 </head>
 
 <body>
-<div class="bubble-container" aria-hidden="true">
-  <span class="bubble" style="left:2%;width:18px;height:18px;animation-duration:12s,2s;animation-delay:0s,0s"></span>
-  <span class="bubble" style="left:8%;width:35px;height:35px;animation-duration:17s,3s;animation-delay:3s,0.5s"></span>
-  <span class="bubble" style="left:15%;width:12px;height:12px;animation-duration:10s,2s;animation-delay:5s,1s"></span>
-  <span class="bubble" style="left:22%;width:25px;height:25px;animation-duration:15s,2.5s;animation-delay:2s,0.5s"></span>
-  <span class="bubble" style="left:30%;width:14px;height:14px;animation-duration:11s,2s;animation-delay:7s,0s"></span>
 
-  <span class="bubble" style="right:3%;width:28px;height:28px;animation-duration:14s,2.5s;animation-delay:1s,0s"></span>
-  <span class="bubble" style="right:9%;width:15px;height:15px;animation-duration:11s,2s;animation-delay:4s,0.5s"></span>
-  <span class="bubble" style="right:16%;width:38px;height:38px;animation-duration:18s,3s;animation-delay:6s,0s"></span>
-  <span class="bubble" style="right:24%;width:20px;height:20px;animation-duration:13s,2s;animation-delay:2s,1s"></span>
-  <span class="bubble" style="right:31%;width:11px;height:11px;animation-duration:9s,2s;animation-delay:8s,0s"></span>
-
-  <span class="bubble" style="left:5%;width:10px;height:10px;animation-duration:8s,2s;animation-delay:1s,0s"></span>
-  <span class="bubble" style="left:19%;width:30px;height:30px;animation-duration:16s,3s;animation-delay:9s,0.5s"></span>
-  <span class="bubble" style="right:6%;width:22px;height:22px;animation-duration:12s,2s;animation-delay:7s,0s"></span>
-  <span class="bubble" style="right:20%;width:13px;height:13px;animation-duration:10s,2s;animation-delay:3s,0.5s"></span>
-  <span class="bubble" style="right:28%;width:32px;height:32px;animation-duration:17s,3s;animation-delay:5s,1s"></span>
-</div>
-<!-- FAITH & WISDOM BACKGROUND -->
+<!-- MOVING FAITH & WISDOM TEXT -->
 <div class="background" aria-hidden="true">
   <span class="faith">✦ Faith &amp; Wisdom ✦</span>
   <span class="faith">💡 Faith &amp; Wisdom</span>
@@ -314,7 +252,34 @@ p {
   <span class="faith">💡 Faith &amp; Wisdom</span>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- GLOWING BUBBLES -->
+<div class="bubble-container" aria-hidden="true">
+
+  <!-- LEFT SIDE -->
+  <span class="bubble" style="left:2%;width:18px;height:18px;animation-duration:11s,2s;animation-delay:0s,0s"></span>
+  <span class="bubble" style="left:8%;width:35px;height:35px;animation-duration:16s,2.5s;animation-delay:3s,0.5s"></span>
+  <span class="bubble" style="left:15%;width:12px;height:12px;animation-duration:9s,1.8s;animation-delay:5s,0s"></span>
+  <span class="bubble" style="left:22%;width:25px;height:25px;animation-duration:13s,2.2s;animation-delay:2s,0.5s"></span>
+  <span class="bubble" style="left:30%;width:14px;height:14px;animation-duration:10s,2s;animation-delay:7s,0s"></span>
+  <span class="bubble" style="left:4%;width:28px;height:28px;animation-duration:14s,2.5s;animation-delay:6s,1s"></span>
+  <span class="bubble" style="left:18%;width:20px;height:20px;animation-duration:12s,2s;animation-delay:8s,0s"></span>
+  <span class="bubble" style="left:26%;width:10px;height:10px;animation-duration:8s,1.5s;animation-delay:4s,0.5s"></span>
+  <span class="bubble" style="left:12%;width:42px;height:42px;animation-duration:18s,3s;animation-delay:10s,0s"></span>
+
+  <!-- RIGHT SIDE -->
+  <span class="bubble" style="right:3%;width:28px;height:28px;animation-duration:13s,2.5s;animation-delay:1s,0s"></span>
+  <span class="bubble" style="right:9%;width:15px;height:15px;animation-duration:10s,2s;animation-delay:4s,0.5s"></span>
+  <span class="bubble" style="right:16%;width:38px;height:38px;animation-duration:17s,3s;animation-delay:6s,0s"></span>
+  <span class="bubble" style="right:24%;width:20px;height:20px;animation-duration:12s,2s;animation-delay:2s,1s"></span>
+  <span class="bubble" style="right:31%;width:11px;height:11px;animation-duration:9s,1.8s;animation-delay:8s,0s"></span>
+  <span class="bubble" style="right:6%;width:22px;height:22px;animation-duration:11s,2s;animation-delay:7s,0s"></span>
+  <span class="bubble" style="right:20%;width:13px;height:13px;animation-duration:9s,1.8s;animation-delay:3s,0.5s"></span>
+  <span class="bubble" style="right:28%;width:32px;height:32px;animation-duration:16s,2.5s;animation-delay:5s,1s"></span>
+  <span class="bubble" style="right:12%;width:42px;height:42px;animation-duration:18s,3s;animation-delay:9s,0s"></span>
+
+</div>
+
+<!-- MAIN CARD -->
 <main>
   <section class="card">
 
@@ -322,7 +287,7 @@ p {
 
     <div class="bulb" aria-hidden="true">💡</div>
 
-    <p>Faith &amp; Wisdom</p>
+    <p><strong>Faith &amp; Wisdom</strong></p>
 
     <p>Review, learn, and test your knowledge!</p>
 
