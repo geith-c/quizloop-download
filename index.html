@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Quiz App</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #1e293b;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.faith {
+  position: absolute;
+  bottom: -40px;
+  color: #93c5fd;
+  opacity: 0;
+  font-size: 12px;
+  font-weight: bold;
+  animation: floatUp linear infinite;
+  user-select: none;
+}
+
+.faith:nth-child(1) { left: 5%; animation-duration: 13s; animation-delay: 0s; }
+.faith:nth-child(2) { left: 15%; animation-duration: 17s; animation-delay: 3s; }
+.faith:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 6s; }
+.faith:nth-child(4) { left: 35%; animation-duration: 19s; animation-delay: 1s; }
+.faith:nth-child(5) { left: 45%; animation-duration: 15s; animation-delay: 5s; }
+.faith:nth-child(6) { left: 55%; animation-duration: 18s; animation-delay: 2s; }
+.faith:nth-child(7) { left: 65%; animation-duration: 14s; animation-delay: 7s; }
+.faith:nth-child(8) { left: 75%; animation-duration: 20s; animation-delay: 4s; }
+.faith:nth-child(9) { left: 85%; animation-duration: 16s; animation-delay: 0s; }
+.faith:nth-child(10) { left: 95%; animation-duration: 13s; animation-delay: 8s; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(-10deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.65; }
+  80% { opacity: 0.45; }
+  100% {
+    transform: translateY(-115vh) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px 22px;
+  border-radius: 22px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.22);
+}
+
+h1 {
+  color: #2563eb;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.7;
+}
+
+.download {
+  display: block;
+  margin-top: 24px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.download:active {
+  transform: scale(0.97);
+  background: #1d4ed8;
+}
+
+.note {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="background" aria-hidden="true">
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+  <span class="faith">faith</span>
+</div>
+
+<main>
+  <section class="card">
+    <h1>My Quiz App</h1>
+    <p>Review, learn, and test your knowledge!</p>
+    <p>I-download ang quiz app dito.</p>
+
+    <a class="download" href="quiz.apk" download>
+      ↓ Download APK
+    </a>
+
+    <p class="note">
+      Learn something new every day.
+    </p>
+  </section>
+</main>
+
+</body>
+</html>
