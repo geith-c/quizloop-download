@@ -19,7 +19,6 @@ body {
   color: #1e293b;
 }
 
-/* DARK BLUE BACKGROUND */
 .background {
   position: fixed;
   inset: 0;
@@ -28,7 +27,7 @@ body {
   z-index: 0;
 }
 
-/* FLOATING FAITH & WISDOM LABELS */
+
 .faith {
   position: absolute;
   left: 0;
@@ -75,7 +74,7 @@ body {
   }
 }
 
-/* BUBBLES LAYER */
+
 .bubble-container {
   position: fixed;
   inset: 0;
@@ -84,7 +83,6 @@ body {
   z-index: 1;
 }
 
-/* BLUE GLOWING BUBBLES */
 .bubble {
   position: absolute;
   display: block;
@@ -178,13 +176,29 @@ h1 {
   margin-bottom: 8px;
 }
 
-/* LIGHT BULB */
 .bulb {
   display: inline-block;
   font-size: 46px;
   margin: 8px 0;
   animation: think 2.5s ease-in-out infinite;
   filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.7));
+
+  
+  text-decoration: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bulb:link,
+.bulb:visited,
+.bulb:hover,
+.bulb:active,
+.bulb:focus {
+  text-decoration: none;
+  border: none;
+  outline: none;
 }
 
 @keyframes think {
@@ -225,7 +239,6 @@ p {
   margin-top: 18px;
 }
 
-/* REDUCE ANIMATION IF DEVICE REQUESTS IT */
 @media (prefers-reduced-motion: reduce) {
   .faith,
   .bubble,
@@ -238,7 +251,7 @@ p {
 
 <body>
 
-<!-- MOVING FAITH & WISDOM TEXT -->
+
 <div class="background" aria-hidden="true">
   <span class="faith">✦ Faith &amp; Wisdom ✦</span>
   <span class="faith">💡 Faith &amp; Wisdom</span>
@@ -252,10 +265,10 @@ p {
   <span class="faith">💡 Faith &amp; Wisdom</span>
 </div>
 
-<!-- GLOWING BUBBLES -->
+
 <div class="bubble-container" aria-hidden="true">
 
-  <!-- LEFT SIDE -->
+
   <span class="bubble" style="left:2%;width:18px;height:18px;animation-duration:11s,2s;animation-delay:0s,0s"></span>
   <span class="bubble" style="left:8%;width:35px;height:35px;animation-duration:16s,2.5s;animation-delay:3s,0.5s"></span>
   <span class="bubble" style="left:15%;width:12px;height:12px;animation-duration:9s,1.8s;animation-delay:5s,0s"></span>
@@ -266,7 +279,7 @@ p {
   <span class="bubble" style="left:26%;width:10px;height:10px;animation-duration:8s,1.5s;animation-delay:4s,0.5s"></span>
   <span class="bubble" style="left:12%;width:42px;height:42px;animation-duration:18s,3s;animation-delay:10s,0s"></span>
 
-  <!-- RIGHT SIDE -->
+  
   <span class="bubble" style="right:3%;width:28px;height:28px;animation-duration:13s,2.5s;animation-delay:1s,0s"></span>
   <span class="bubble" style="right:9%;width:15px;height:15px;animation-duration:10s,2s;animation-delay:4s,0.5s"></span>
   <span class="bubble" style="right:16%;width:38px;height:38px;animation-duration:17s,3s;animation-delay:6s,0s"></span>
@@ -279,7 +292,6 @@ p {
 
 </div>
 
-<!-- MAIN CARD -->
 <main>
   <section class="card">
 
