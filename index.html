@@ -328,30 +328,68 @@ p {
 </head>
 
 <body>
-<audio id="siteMusic" autoplay loop></audio>
+
+<button id="musicButton" onclick="toggleMusic()" style="
+  background: #071a33;
+  color: #00d9ff;
+  border: 1px solid #00d9ff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  box-shadow: 0 0 10px #007bff;
+">
+  🎵 Play Music
+</button>
+
+<audio id="siteMusic"></audio>
 
 <script>
-  const musicTracks = [
-    "./music1.mp3",
-    "./music2.mp3",
-    "./music3.mp3"
-  ];
+const musicTracks = [
+  "./music1.mp3",
+  "./music2.mp3",
+  "./music3.mp3"
+];
 
-  const siteMusic = document.getElementById("siteMusic");
+const siteMusic = document.getElementById("siteMusic");
+const musicButton = document.getElementById("musicButton");
 
+let isPlaying = false;
+
+async function toggleMusic() {
+  if (isPlaying) {
+    siteMusic.pause();
+    isPlaying = false;
+    musicButton.textContent = "🎵 Play Music";
+    return;
+  }
+
+  if (!siteMusic.src || siteMusic.ended) {
+    const randomIndex = Math.floor(
+      Math.random() * musicTracks.length
+    );
+    siteMusic.src = musicTracks[randomIndex];
+  }
+
+  siteMusic.volume = 0.25;
+
+  try {
+    await siteMusic.play();
+    isPlaying = true;
+    musicButton.textContent = "⏸ Stop Music";
+  } catch (error) {
+    musicButton.textContent = "🎵 Play Music";
+  }
+}
+
+siteMusic.addEventListener("ended", () => {
   const randomIndex = Math.floor(
     Math.random() * musicTracks.length
   );
-
   siteMusic.src = musicTracks[randomIndex];
-  siteMusic.volume = 0.25;
-
-  window.addEventListener("load", () => {
-    siteMusic.play().catch(() => {
-      console.log("Autoplay was blocked by the browser.");
-    });
-  });
+  siteMusic.play().catch(() => {});
+});
 </script>
+
   
 
 <button class="declaration-btn"
