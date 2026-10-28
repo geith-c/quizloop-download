@@ -330,30 +330,90 @@ p {
 </head>
 
 <body>
-<audio id="siteMusic" autoplay loop></audio>
+
+
+<button id="musicButton" onclick="toggleMusic()" title="Play Music" style="
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #071a33;
+  color: #00d9ff;
+  border: 1px solid #00d9ff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 8px #007bff, 0 0 16px #00d9ff55;
+  z-index: 9999;
+">
+  ▶
+</button>
+
+
+<audio id="siteMusic"></audio>
 
 <script>
-  const musicTracks = [
-    "./music1.mp3",
-    "./music2.mp3",
-    "./music3.mp3"
-  ];
+const musicTracks = [
+  "./music1.mp3",
+  "./music2.mp3",
+  "./music3.mp3"
+];
 
-  const siteMusic = document.getElementById("siteMusic");
+const siteMusic = document.getElementById("siteMusic");
+const musicButton = document.getElementById("musicButton");
 
-  const randomIndex = Math.floor(
-    Math.random() * musicTracks.length
-  );
+let isPlaying = false;
+let currentTrack = -1;
 
-  siteMusic.src = musicTracks[randomIndex];
+function randomTrack() {
+  let nextTrack;
+
+  do {
+    nextTrack = Math.floor(Math.random() * musicTracks.length);
+  } while (musicTracks.length > 1 && nextTrack === currentTrack);
+
+  currentTrack = nextTrack;
+  siteMusic.src = musicTracks[currentTrack];
+}
+
+async function toggleMusic() {
+  if (isPlaying) {
+    siteMusic.pause();
+    isPlaying = false;
+    musicButton.textContent = "▶";
+    musicButton.title = "Play Music";
+    return;
+  }
+
+  if (!siteMusic.src) {
+    randomTrack();
+  }
+
   siteMusic.volume = 0.25;
 
-  window.addEventListener("load", () => {
-    siteMusic.play().catch(() => {
-      console.log("Autoplay was blocked by the browser.");
-    });
+  try {
+    await siteMusic.play();
+    isPlaying = true;
+    musicButton.textContent = "Ⅱ";
+    musicButton.title = "Stop Music";
+  } catch (error) {
+    musicButton.textContent = "▶";
+  }
+}
+
+siteMusic.addEventListener("ended", () => {
+  randomTrack();
+  siteMusic.play().catch(() => {
+    isPlaying = false;
+    musicButton.textContent = "▶";
   });
+});
 </script>
+
   
 
 <button class="declaration-btn"
