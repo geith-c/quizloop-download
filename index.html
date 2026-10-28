@@ -328,7 +328,30 @@ p {
 </head>
 
 <body>
+<audio id="siteMusic" autoplay loop></audio>
 
+<script>
+  const musicTracks = [
+    "./music1.mp3",
+    "./music2.mp3",
+    "./music3.mp3"
+  ];
+
+  const siteMusic = document.getElementById("siteMusic");
+
+  const randomIndex = Math.floor(
+    Math.random() * musicTracks.length
+  );
+
+  siteMusic.src = musicTracks[randomIndex];
+  siteMusic.volume = 0.25;
+
+  window.addEventListener("load", () => {
+    siteMusic.play().catch(() => {
+      console.log("Autoplay was blocked by the browser.");
+    });
+  });
+</script>
   
 
 <button class="declaration-btn"
